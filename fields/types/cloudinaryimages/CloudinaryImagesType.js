@@ -345,7 +345,9 @@ cloudinaryimages.prototype.updateItem = function (item, data, files, callback) {
 		}
 		return value;
 	});
-	values = _.flatten(values);
+
+	const flatten = arr => arr.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
+	values = flatten(values);
 
 	async.map(values, function (value, next) {
 		if (typeof value === 'object' && 'public_id' in value) {
