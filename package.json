@@ -88,7 +88,7 @@
     "redux-thunk": "^2.2.0",
     "sanitize-filename": "^1.6.1",
     "sanitize-html": "^1.14.1",
-    "scmp": "^1.0.2",
+    "scmp": "^2.1.0",
     "semver": "^5.4.1",
     "serve-favicon": "^2.4.5",
     "string-to-stream": "^1.1.0",
