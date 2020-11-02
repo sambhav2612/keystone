@@ -68,6 +68,7 @@ var RelationshipFilter = React.createClass({
 			xhr({
 				url: Keystone.adminPath + '/api/' + this.props.field.refList.path + '/' + id + '?basic',
 				responseType: 'json',
+				json: true
 			}, (err, resp, data) => {
 				if (err || !data) return next(err);
 				if (typeof data === 'string') {
@@ -112,6 +113,7 @@ var RelationshipFilter = React.createClass({
 		xhr({
 			url: Keystone.adminPath + '/api/' + this.props.field.refList.path + '?basic&search=' + searchString + '&' + filters,
 			responseType: 'json',
+			json: true
 		}, (err, resp, data) => {
 			if (err) {
 				// TODO: Handle errors better

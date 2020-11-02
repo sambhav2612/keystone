@@ -98,6 +98,7 @@ List.prototype.createItem = function (formData, callback) {
 		method: 'POST',
 		headers: assign({}, Keystone.csrf.header),
 		body: formData,
+		json: true
 	}, (err, resp, data) => {
 		if (err) callback(err);
 		if (typeof data === 'string') {
@@ -129,6 +130,7 @@ List.prototype.updateItem = function (id, formData, callback) {
 		method: 'POST',
 		headers: assign({}, Keystone.csrf.header),
 		body: formData,
+		json: true
 	}, (err, resp, data) => {
 		if (err) return callback(err);
 		if (typeof data === 'string') {
@@ -238,6 +240,7 @@ List.prototype.loadItem = function (itemId, options, callback) {
 	xhr({
 		url: url,
 		responseType: 'json',
+		json: true
 	}, (err, resp, data) => {
 		if (err) return callback(err);
 		// Pass the data as result or error, depending on the statusCode
@@ -264,6 +267,7 @@ List.prototype.loadItems = function (options, callback) {
 	xhr({
 		url: url,
 		responseType: 'json',
+		json: true
 	}, (err, resp, data) => {
 		if (err) callback(err);
 		// Pass the data as result or error, depending on the statusCode
