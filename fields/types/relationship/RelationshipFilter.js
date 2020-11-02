@@ -68,12 +68,8 @@ var RelationshipFilter = React.createClass({
 			xhr({
 				url: Keystone.adminPath + '/api/' + this.props.field.refList.path + '/' + id + '?basic',
 				responseType: 'json',
-				json: true
 			}, (err, resp, data) => {
 				if (err || !data) return next(err);
-				if (typeof data === 'string') {
-					data = JSON.parse(data);
-				}
 				this.cacheItem(data);
 				next(err, data);
 			});
@@ -113,7 +109,6 @@ var RelationshipFilter = React.createClass({
 		xhr({
 			url: Keystone.adminPath + '/api/' + this.props.field.refList.path + '?basic&search=' + searchString + '&' + filters,
 			responseType: 'json',
-			json: true
 		}, (err, resp, data) => {
 			if (err) {
 				// TODO: Handle errors better
@@ -122,9 +117,6 @@ var RelationshipFilter = React.createClass({
 					searchIsLoading: false,
 				});
 				return;
-			}
-			if (typeof data === 'string') {
-				data = JSON.parse(data);
 			}
 			data.results.forEach(this.cacheItem);
 			if (thenPopulateValue) {

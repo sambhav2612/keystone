@@ -115,12 +115,8 @@ module.exports = Field.create({
 			xhr({
 				url: Keystone.adminPath + '/api/' + this.props.refList.path + '/' + value + '?basic',
 				responseType: 'json',
-				json: true
 			}, (err, resp, data) => {
 				if (err || !data) return done(err);
-				if (typeof data === 'string') {
-					data = JSON.parse(data);
-				}
 				this.cacheItem(data);
 				done(err, data);
 			});
@@ -142,14 +138,10 @@ module.exports = Field.create({
 		xhr({
 			url: Keystone.adminPath + '/api/' + this.props.refList.path + '?basic&search=' + input + '&' + filters,
 			responseType: 'json',
-			json: true
 		}, (err, resp, data) => {
 			if (err) {
 				console.error('Error loading items:', err);
 				return callback(null, []);
-			}
-			if (typeof data === 'string') {
-				data = JSON.parse(data);
 			}
 			data.results.forEach(this.cacheItem);
 			callback(null, {
