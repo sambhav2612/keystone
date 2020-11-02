@@ -94,10 +94,11 @@ const List = function (options) {
 List.prototype.createItem = function (formData, callback) {
 	xhr({
 		url: `${Keystone.adminPath}/api/${this.path}/create`,
-		responseType: '',
+		responseType: 'json',
 		method: 'POST',
 		headers: assign({}, Keystone.csrf.header),
 		body: formData,
+		json: true
 	}, (err, resp, data) => {
 		if (err) callback(err);
 		if (typeof data === 'string') {
@@ -125,10 +126,11 @@ List.prototype.createItem = function (formData, callback) {
 List.prototype.updateItem = function (id, formData, callback) {
 	xhr({
 		url: `${Keystone.adminPath}/api/${this.path}/${id}`,
-		responseType: '',
+		responseType: 'json',
 		method: 'POST',
 		headers: assign({}, Keystone.csrf.header),
 		body: formData,
+		json: true
 	}, (err, resp, data) => {
 		if (err) return callback(err);
 		if (typeof data === 'string') {
@@ -237,7 +239,8 @@ List.prototype.loadItem = function (itemId, options, callback) {
 	if (query.length) url += '?' + query;
 	xhr({
 		url: url,
-		responseType: '',
+		responseType: 'json',
+		json: true
 	}, (err, resp, data) => {
 		if (err) return callback(err);
 		// Pass the data as result or error, depending on the statusCode
@@ -263,7 +266,8 @@ List.prototype.loadItems = function (options, callback) {
 	const url = Keystone.adminPath + '/api/' + this.path + buildQueryString(options);
 	xhr({
 		url: url,
-		responseType: '',
+		responseType: 'json',
+		json: true
 	}, (err, resp, data) => {
 		if (err) callback(err);
 		// Pass the data as result or error, depending on the statusCode
