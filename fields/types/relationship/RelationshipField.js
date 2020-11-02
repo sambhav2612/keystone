@@ -113,6 +113,9 @@ module.exports = Field.create({
 				responseType: 'json',
 			}, (err, resp, data) => {
 				if (err || !data) return done(err);
+				if (typeof data === 'string') {
+					data = JSON.parse(data);
+				}
 				this.cacheItem(data);
 				done(err, data);
 			});
@@ -140,6 +143,9 @@ module.exports = Field.create({
 			if (err) {
 				console.error('Error loading items:', err);
 				return callback(null, []);
+			}
+			if (typeof data === 'string') {
+				data = JSON.parse(data);
 			}
 			data.results.forEach(this.cacheItem);
 			callback(null, {
