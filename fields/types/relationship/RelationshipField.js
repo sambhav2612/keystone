@@ -110,7 +110,7 @@ module.exports = Field.create({
 		async.map(values, (value, done) => {
 			xhr({
 				url: Keystone.adminPath + '/api/' + this.props.refList.path + '/' + value + '?basic',
-				responseType: 'json',
+				responseType: '',
 			}, (err, resp, data) => {
 				if (err || !data) return done(err);
 				if (typeof data === 'string') {
@@ -138,7 +138,7 @@ module.exports = Field.create({
 		const filters = this.buildFilters();
 		xhr({
 			url: Keystone.adminPath + '/api/' + this.props.refList.path + '?basic&search=' + input + '&' + filters,
-			responseType: 'json',
+			responseType: '',
 		}, (err, resp, data) => {
 			if (err) {
 				console.error('Error loading items:', err);
