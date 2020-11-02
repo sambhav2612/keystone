@@ -100,6 +100,9 @@ List.prototype.createItem = function (formData, callback) {
 		body: formData,
 	}, (err, resp, data) => {
 		if (err) callback(err);
+		if (typeof data === 'string') {
+			data = JSON.parse(data);
+		}
 		if (resp.statusCode === 200) {
 			callback(null, data);
 		} else {
@@ -128,6 +131,9 @@ List.prototype.updateItem = function (id, formData, callback) {
 		body: formData,
 	}, (err, resp, data) => {
 		if (err) return callback(err);
+		if (typeof data === 'string') {
+			data = JSON.parse(data);
+		}
 		if (resp.statusCode === 200) {
 			callback(null, data);
 		} else {
@@ -235,6 +241,9 @@ List.prototype.loadItem = function (itemId, options, callback) {
 	}, (err, resp, data) => {
 		if (err) return callback(err);
 		// Pass the data as result or error, depending on the statusCode
+		if (typeof data === 'string') {
+			data = JSON.parse(data);
+		}
 		if (resp.statusCode === 200) {
 			callback(null, data);
 		} else {
@@ -258,6 +267,9 @@ List.prototype.loadItems = function (options, callback) {
 	}, (err, resp, data) => {
 		if (err) callback(err);
 		// Pass the data as result or error, depending on the statusCode
+		if (typeof data === 'string') {
+			data = JSON.parse(data);
+		}
 		if (resp.statusCode === 200) {
 			callback(null, data);
 		} else {
