@@ -95,7 +95,7 @@
     "redux-thunk": "^2.2.0",
     "react-select": "^1.2.4",
     "sanitize-filename": "^1.6.1",
-    "tinymce": "^4.9.2",
+    "tinymce": "^5.7.1",
     "sanitize-html": "^1.20.1",
     "scmp": "^1.0.2",
     "semver": "^6.0.0",
